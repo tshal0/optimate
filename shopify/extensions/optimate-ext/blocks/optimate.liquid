@@ -1,0 +1,203 @@
+<div id="de-live-preview"></div>
+<script>
+  window.LivePreview = {
+    settings: {{ block.settings | json }},
+    product: {{ product | json }},
+    selected: {{ product.selected_or_first_available_variant.id }}
+  }
+</script>
+{% schema %}
+{
+  "name": "LivePreview",
+  "target": "section",
+  "stylesheet": "index.css",
+  "javascript": "index.js",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "autofill": true
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Personalize!"
+    },
+    {
+      "type": "select",
+      "id": "button_variant",
+      "label": "Button Type",
+      "default": "outlined",
+      "options": [
+        {
+          "value": "outlined",
+          "label": "Outlined"
+        },
+        {
+          "value": "filled",
+          "label": "Filled"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "button_fill_color",
+      "label": "Button: Fill Color",
+      "default": "#1c1d1d"
+    },
+    {
+      "type": "color",
+      "id": "button_outline_color",
+      "label": "Button: Outline Color",
+      "default": "#1c1d1d"
+    },
+    {
+      "type": "color",
+      "id": "button_font_color",
+      "label": "Button: Font Color",
+      "default": "#1c1d1d"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button Font Size Multiplier",
+      "min": 1,
+      "max": 4,
+      "step": 0.1,
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "button_font_style",
+      "label": "Button: Font Style",
+      "default": "normal",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "italic",
+          "label": "Italic"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Price"
+    },
+    {
+      "type": "select",
+      "id": "enable_price",
+      "label": "Enable Price",
+      "default": "Y",
+      "options": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "price_font_size",
+      "label": "Price: Font Size Multiplier",
+      "min": 1,
+      "max": 4,
+      "step": 0.1,
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "price_font_style",
+      "label": "Price: Font Style",
+      "default": "normal",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "italic",
+          "label": "Italic"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Compare At Price"
+    },
+    {
+      "type": "select",
+      "id": "enable_compare_at_price",
+      "label": "Enable Compare At Price",
+      "default": "Y",
+      "options": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "compare_at_price_font_size",
+      "label": "Compare At Price: Font Size Multiplier",
+      "min": 1,
+      "max": 4,
+      "step": 0.1,
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "compare_at_price_font_style",
+      "label": "Compare At Price: Font Style",
+      "default": "normal",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "italic",
+          "label": "Italic"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "compare_at_price_strikethrough",
+      "label": "Compare At Price: StrikeThrough",
+      "default": "Y",
+      "options": [
+        {
+          "value": "Y",
+          "label": "Yes"
+        },
+        {
+          "value": "N",
+          "label": "No"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
