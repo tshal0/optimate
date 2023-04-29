@@ -1,5 +1,8 @@
 {
   "recommendations": [
-    "shopify.polaris-for-vscode"
+    "shopify.polaris-for-vscode",
+    "esbenp.prettier-vscode",
+    "firsttris.vscode-jest-runner",
+    "dbaeumer.vscode-eslint"
   ]
 }
