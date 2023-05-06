@@ -1,11 +1,10 @@
-# Optimate
+# Splitfest
 
 1. Generate Shopify App
 2. Generate Shopify Theme App Extension
 3. Generate NestJS Backend
 
 Had to install rvm, then install zsh shell integration for iTerm, then rvm use 3.2.2
-
 
 # Example @nestjs-shopify application
 
@@ -70,3 +69,23 @@ The application allows for both Online and Offline authentication. But Shopify r
 The `ProductsController` in this application that returns the total product count in Shopify, utilizes `@ShopifyOnlineAuth()` decorator. That signals our application to look for online JWT tokens when calling the `GET /api/products/count` route.
 
 The frontend utilizes `@shopify/app-bridge` to transparently fetch online tokens for us using the `userLoggedInfetch` helper function.
+
+## Docker ECR Auth
+
+~/.docker/config.json
+
+```json
+{
+  "auths": {
+    "332795564348.dkr.ecr.us-east-2.amazonaws.com": {}
+  },
+  "credsStore": "osxkeychain"
+}
+```
+
+```bash
+aws ecr get-login-password \
+  --region us-east-2 --profile my-dev-profile | docker login \
+  --username AWS \
+  --password-stdin 332795564348.dkr.ecr.us-east-2.amazonaws.com
+```

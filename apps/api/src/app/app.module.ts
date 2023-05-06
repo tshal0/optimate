@@ -17,6 +17,7 @@ import { ShopifyCoreConfigService } from './shopify/services/shopify-core-config
 import { ShopifyOfflineConfigService } from './shopify/services/shopify-offline-config.service';
 import { ShopifyOnlineConfigService } from './shopify/services/shopify-online-config.service';
 import { WebhooksModule } from './shopify/webhooks/webhooks.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { WebhooksModule } from './shopify/webhooks/webhooks.module';
     ShopifyGraphqlProxyModule,
     WebhooksModule,
     ProductsModule,
+    HealthModule,
   ],
 })
 export class AppModule {}

@@ -13,7 +13,9 @@ export const getShopifyCoreConfig = (): Omit<
   apiKey: process.env.SHOPIFY_API_KEY,
   apiSecretKey: process.env.SHOPIFY_API_SECRET,
   apiVersion: ApiVersion.October22,
-  hostName: process.env.HOST.replace(/https?:\/\//, ''),
+  hostName: process.env.HOST
+    ? process.env.HOST?.replace(/https?:\/\//, '')
+    : 'HOST_NOT_FOUND',
   isEmbeddedApp: true,
   scopes: ['write_products'],
   hostScheme: 'https',

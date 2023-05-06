@@ -12,7 +12,8 @@
         "main": "apps/api/src/main.ts",
         "tsConfig": "apps/api/tsconfig.app.json",
         "target": "node",
-        "compiler": "tsc"
+        "compiler": "tsc",
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {
@@ -35,7 +36,8 @@
       },
       "configurations": {
         "production": {
-          "buildTarget": "api:build:production"
+          "buildTarget": "api:build:production",
+          "hostname": "0.0.0.0"
         }
       }
     },
@@ -52,6 +54,23 @@
       "options": {
         "jestConfig": "apps/api/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "options": {
+        "engine": "docker",
+        "metadata": {
+          "images": ["splitfest/api"],
+          "load": true,
+          "tags": [
+            "type=schedule",
+            "type=ref,event=branch",
+            "type=ref,event=tag",
+            "type=ref,event=pr",
+            "type=sha,prefix=sha-"
+          ]
+        }
       }
     }
   },

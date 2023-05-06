@@ -7,7 +7,7 @@ applications:
             - yarn install
         build:
           commands:
-            - npx nx build api
+            - npx nx run api:build
       artifacts:
         baseDirectory: dist/apps/api/
         files:
