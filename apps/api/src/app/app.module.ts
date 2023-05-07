@@ -18,8 +18,10 @@ import { ShopifyOfflineConfigService } from './shopify/services/shopify-offline-
 import { ShopifyOnlineConfigService } from './shopify/services/shopify-online-config.service';
 import { WebhooksModule } from './shopify/webhooks/webhooks.module';
 import { HealthModule } from './health/health.module';
+import { AppController } from './app.controller';
 
 @Module({
+  controllers: [AppController],
   imports: [
     ConfigModule.forRoot({
       cache: true,

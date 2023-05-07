@@ -3,10 +3,10 @@
     "frontend": "dockerfile.v0",
     "attrs": {
       "filename": "Dockerfile",
-      "label:org.opencontainers.image.created": "2023-05-05T18:44:39.229Z",
+      "label:org.opencontainers.image.created": "2023-05-06T23:48:27.726Z",
       "label:org.opencontainers.image.description": "",
       "label:org.opencontainers.image.licenses": "",
-      "label:org.opencontainers.image.revision": "39000ea8935d3fadbb8b79dbe9bfc157b6e22326",
+      "label:org.opencontainers.image.revision": "ddf94fa6579d07d1f67f70e074165226dc9b29ba",
       "label:org.opencontainers.image.source": "",
       "label:org.opencontainers.image.title": "",
       "label:org.opencontainers.image.url": "",
@@ -20,6 +20,6 @@
       }
     ]
   },
-  "containerimage.config.digest": "sha256:e4bdf2b5bf00263e6fc7720635631e47a9388a2f6732f1158dd828251d105bb5",
-  "containerimage.digest": "sha256:e4bdf2b5bf00263e6fc7720635631e47a9388a2f6732f1158dd828251d105bb5"
+  "containerimage.config.digest": "sha256:9819f9143accf4301d51be7f8dc08e954d9b601a123b5621cfd9f172d489c280",
+  "containerimage.digest": "sha256:9819f9143accf4301d51be7f8dc08e954d9b601a123b5621cfd9f172d489c280"
 }

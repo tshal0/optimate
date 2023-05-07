@@ -4,7 +4,7 @@
  */
 
 import '@shopify/shopify-api/adapters/node';
-import { Logger } from '@nestjs/common';
+import { Logger, RequestMethod } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
@@ -13,7 +13,12 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, { rawBody: true });
   const globalPrefix = 'api';
   app.enableShutdownHooks();
-  app.setGlobalPrefix(globalPrefix);
+  app.setGlobalPrefix(globalPrefix, {
+    exclude: [
+      { path: '', method: RequestMethod.GET },
+      { path: '/', method: RequestMethod.GET },
+    ],
+  });
   const port = process.env.PORT || 8080;
   const host = process.env.HOST || `http://localhost:${port}`;
   const shop = process.env.SHOP;
