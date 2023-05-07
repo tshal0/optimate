@@ -1,5 +1,5 @@
 # --- dns/outputs.tf ---
 
-output "certificate_arn" {
+output "certificate" {
   value = aws_acm_certificate_validation.dns.certificate_arn
 }
