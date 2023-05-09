@@ -21,6 +21,7 @@ resource "aws_alb_target_group" "alb_tg_ui" {
   health_check {
     path     = "/"
     protocol = "HTTP"
+    matcher = "200,307"
   }
   lifecycle {
     create_before_destroy = true
