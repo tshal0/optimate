@@ -35,6 +35,19 @@ module "ecr" {
   app_name     = var.app_name
   app_services = var.app_services
 }
+
+module "rds" {
+  source          = "./rds"
+  app_name        = var.app_name
+  app_sg          = module.vpc.app_sg
+  rds_sg          = module.vpc.rds_sg
+  private_subnets = module.vpc.private_subnets
+  public_subnets  = module.vpc.public_subnets
+  db_user         = var.db_user
+  db_pass         = var.db_pass
+  db_name         = var.db_name
+}
+
 module "ecs" {
   source             = "./ecs"
   app_name           = var.app_name
@@ -52,7 +65,15 @@ module "ecs" {
   api_port           = 8081
   target_group_api   = module.alb.target_group_api
   target_group_ui    = module.alb.target_group_ui
+
+  rds     = module.rds.db
+  db_host = module.rds.rds_domain
+  db_port = module.rds.rds_port
+  db_user = var.db_user
+  db_pass = var.db_pass
+  db_name = var.db_name
 }
+
 
 module "dns" {
   source           = "./dns"
@@ -71,4 +92,7 @@ output "certificate" {
 }
 output "alb_dns_name" {
   value = module.alb.dns_name
+}
+output "rds_endpoint" {
+  value = module.rds.rds_domain
 }

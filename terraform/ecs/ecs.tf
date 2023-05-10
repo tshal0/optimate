@@ -75,6 +75,10 @@ resource "aws_ecs_task_definition" "app_task_ui" {
   execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
   task_role_arn            = aws_iam_role.ecsTaskExecutionRole.arn
 }
+
+# data "aws_db_instance" "rds" {
+#   db_instance_identifier = "${var.app_name}-rds"
+# }
 resource "aws_ecs_task_definition" "app_task_api" {
   family                   = lower("${var.app_name}-api-task") # Name your task
   container_definitions    = <<DEFINITION
@@ -84,11 +88,17 @@ resource "aws_ecs_task_definition" "app_task_api" {
       "image": "${var.ecr_repositories["${var.app_name}-api"]}",
       "essential": true,
       "environment": [
+        {"name": "BUILD", "value": "5"},
         {"name": "SHOP", "value": "${var.shop}"},
         {"name": "PORT", "value": "${var.api_port}"},
         {"name": "HOST", "value": "${var.host}"},
         {"name": "SHOPIFY_API_KEY", "value": "${var.shopify_api_key}"},
-        {"name": "SHOPIFY_API_SECRET", "value": "${var.shopify_api_secret}"}
+        {"name": "SHOPIFY_API_SECRET", "value": "${var.shopify_api_secret}"},
+        {"name": "DB_HOST", "value": "${var.db_host}"},
+        {"name": "DB_PORT", "value": "${var.db_port == null ? "" : var.db_port}"},
+        {"name": "DB_USER", "value": "${var.db_user}"},
+        {"name": "DB_PASS", "value": "${var.db_pass}"},
+        {"name": "DB_NAME", "value": "${var.db_name}"}
       ],
       "portMappings": [
         {

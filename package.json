@@ -9,7 +9,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "ngrok":"curl -s GET localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url'"
+    "ngrok":"ngrok http 8081",
+    "ngrok:url":"curl -s GET localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url'"
   },
   "private": true,
   "dependencies": {

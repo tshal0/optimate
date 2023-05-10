@@ -104,3 +104,18 @@ variable "service_configs" {
   description = "Service configuration"
 }
 ########################################################################################################################
+
+# RDS
+
+variable "db_user" {
+  type      = string
+  sensitive = true
+}
+variable "db_pass" {
+  type      = string
+  sensitive = true
+}
+variable "db_name" {
+  type      = string
+  sensitive = true
+}

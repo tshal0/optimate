@@ -34,9 +34,6 @@ variable "host" {
 variable "api_url" {
   type = string
 }
-# variable "port" {
-#   type = number
-# }
 variable "ecr_repositories" {
   type = map(string)
 }
@@ -50,5 +47,26 @@ variable "target_group_ui" {
   type = string
 }
 variable "target_group_api" {
+  type = string
+}
+
+variable "rds" {
+  type = any
+}
+variable "db_host" {
+  type    = string
+  default = "DB_HOST"
+}
+variable "db_port" {
+  type    = number
+  default = 3306
+}
+variable "db_user" {
+  type = string
+}
+variable "db_pass" {
+  type = string
+}
+variable "db_name" {
   type = string
 }

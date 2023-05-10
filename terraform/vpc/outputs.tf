@@ -12,6 +12,10 @@ output "app_sg" {
   value = aws_security_group.app_sg.id
 }
 
+output "rds_sg" {
+  value = aws_security_group.rds_sg.id
+}
+
 output "public_subnets" {
   value = aws_subnet.public[*].id
 }

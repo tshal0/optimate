@@ -166,6 +166,28 @@ resource "aws_security_group" "app_sg" {
   }
 }
 
+# Create RDS Security Group
+resource "aws_security_group" "rds_sg" {
+  name        = "${var.app_name}-rds-sg"
+  description = "Allow RDS traffic"
+  vpc_id      = aws_vpc.app_vpc.id
+
+  ingress {
+    from_port        = 3306
+    to_port          = 3306
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+}
+
 resource "aws_vpc_endpoint" "ecr_dkr" {
   vpc_id             = aws_vpc.app_vpc.id
   service_name       = "com.amazonaws.${var.aws_region}.ecr.dkr"
