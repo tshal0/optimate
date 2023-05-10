@@ -4,11 +4,16 @@ services:
     extends:
       file: docker-compose.base.yml
       service: nx-app-base
+    env_file:
+      - .env
     environment:
       - PORT=8080
+      - DB_NAME=splitfest
+      - DB_HOST=host.docker.internal
+      - DB_USER=root
+      - DB_PASS=password
+      - DB_PORT=3306
     command: npm run api:dev:docker
-    networks:
-      - splitfest-nw
     ports:
       - 8080:8080 # API Entry port
       - 4311:4311 # Server Debugging port
@@ -17,8 +22,8 @@ services:
       file: docker-compose.base.yml
       service: nx-app-base
     command: npm run web:dev:docker
-    networks:
-      - splitfest-nw
+    env_file:
+      - .env
     environment:
       - PORT=8081
       - API_URL=http://host.docker.internal:8080
@@ -27,8 +32,6 @@ services:
   db:
     image: mysql:8
     restart: always
-    networks:
-      - splitfest-nw
     environment:
       MYSQL_DATABASE: 'db'
       MYSQL_USER: 'user'

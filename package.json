@@ -8,7 +8,8 @@
     "api:migrate": "cd ./apps/api && npx mikro-orm schema:update -r",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "ngrok":"curl -s GET localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url'"
   },
   "private": true,
   "dependencies": {
