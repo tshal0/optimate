@@ -7,6 +7,8 @@ services:
     environment:
       - PORT=8080
     command: npm run api:dev:docker
+    networks:
+      - splitfest-nw
     ports:
       - 8080:8080 # API Entry port
       - 4311:4311 # Server Debugging port
@@ -15,11 +17,33 @@ services:
       file: docker-compose.base.yml
       service: nx-app-base
     command: npm run web:dev:docker
+    networks:
+      - splitfest-nw
     environment:
       - PORT=8081
       - API_URL=http://host.docker.internal:8080
     ports:
       - 8081:8081
-
+  db:
+    image: mysql:8
+    restart: always
+    networks:
+      - splitfest-nw
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      # <Port exposed> : <MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+      - db-volume:/var/lib/mysql
+# Names our volume
 volumes:
   mono-node-modules: null
+  db-volume:

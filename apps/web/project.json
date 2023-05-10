@@ -30,6 +30,11 @@
         "development": {
           "buildTarget": "web:build:development",
           "port": 8081,
+          "dev": true
+        },
+        "docker": {
+          "buildTarget": "web:build:development",
+          "port": 8081,
           "dev": true,
           "hostname": "0.0.0.0"
         },

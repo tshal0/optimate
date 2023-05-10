@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "api:dev:docker": "nx serve api --host=0.0.0.0 --port=4311",
-    "web:dev:docker": "nx serve web",
+    "api:dev:docker": "nx run api:serve:docker --port=4311",
+    "web:dev:docker": "nx run web:serve:docker",
+    "api:migrate": "cd ./apps/api && npx mikro-orm schema:update -r",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"
