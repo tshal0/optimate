@@ -13,3 +13,6 @@ aws ecr get-login-password \
 
 docker tag splitfest/api:main 332795564348.dkr.ecr.us-east-2.amazonaws.com/splitfest-api:latest
 docker push 332795564348.dkr.ecr.us-east-2.amazonaws.com/splitfest-api:latest
+
+docker tag splitfest/web:main 332795564348.dkr.ecr.us-east-2.amazonaws.com/splitfest-ui:latest
+docker push 332795564348.dkr.ecr.us-east-2.amazonaws.com/splitfest-ui:latest

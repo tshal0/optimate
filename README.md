@@ -89,3 +89,15 @@ aws ecr get-login-password \
   --username AWS \
   --password-stdin 332795564348.dkr.ecr.us-east-2.amazonaws.com
 ```
+
+## Start MySQL Docker Container
+
+```bash
+docker network create splitfest-nw
+sudo docker run --name=db --network splitfest-nw -d mysql:8
+
+curl --request GET \
+    --url http://localhost:3000
+
+
+```

@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "api:dev:docker": "nx serve api --host=0.0.0.0 --port=4311",
+    "web:dev:docker": "nx serve web",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"
@@ -11,6 +13,7 @@
   "dependencies": {
     "@apollo/client": "^3.7.11",
     "@mikro-orm/core": "^5.6.16",
+    "@mikro-orm/mysql": "^5.7.3",
     "@mikro-orm/nestjs": "^5.1.8",
     "@mikro-orm/sqlite": "^5.6.16",
     "@nestjs-shopify/auth": "^4.0.0",
@@ -29,6 +32,7 @@
     "core-js": "^3.30.0",
     "express": "^4.18.2",
     "graphql": "^16.6.0",
+    "mysql2": "^2.1.0",
     "next": "13.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
