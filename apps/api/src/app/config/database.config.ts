@@ -6,7 +6,6 @@ import config from '../../../db/mikro-orm.config';
 const logger = new Logger('MikroORM');
 export const getDatabaseConfig = (): MikroOrmModuleOptions => ({
   ...config,
-  dbName: 'apps/api/api.sqlite3',
   logger: logger.log.bind(logger),
 });
 

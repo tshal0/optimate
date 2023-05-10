@@ -35,6 +35,10 @@
         "buildTarget": "api:build"
       },
       "configurations": {
+        "docker": {
+          "buildTarget": "api:build:production",
+          "port": 8080
+        },
         "production": {
           "buildTarget": "api:build:production",
           "hostname": "0.0.0.0"

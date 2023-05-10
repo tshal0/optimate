@@ -8,13 +8,15 @@ const baseDir = path.resolve(__dirname, '../../..');
 
 const config: Options = {
   entities: [ShopEntity, SessionEntity],
-  baseDir,
-  // type: 'sqlite',
-  driver: MySqlDriver,
+  type: 'mysql',
   forceUtcTimezone: true,
-  timezone: 'US/Eastern',
-  dbName: 'api.sqlite3',
+  dbName: 'splitfest',
   debug: true,
+  host: 'host.docker.internal',
+  port: 3306,
+  user: 'root',
+  password: 'password',
+  migrations: {},
 };
 
 export default config;
